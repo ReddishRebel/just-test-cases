@@ -1,0 +1,52 @@
+{
+  "name": "just-test-cases",
+  "version": "1.0.0",
+  "description": "Simple tool for test cases manipulations.",
+  "keywords": [
+    "tests",
+    "test",
+    "cases",
+    "view",
+    "markdown",
+    "json"
+  ],
+  "homepage": "https://github.com/DonVietnam/test-cases-viewer#readme",
+  "bugs": {
+    "url": "https://github.com/DonVietnam/test-cases-viewer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DonVietnam/test-cases-viewer.git"
+  },
+  "license": "MIT",
+  "author": "DonVietnam",
+  "type": "commonjs",
+  "main": "index.js",
+  "workspaces": [
+    "./packages/client",
+    "./packages/server",
+    "./packages/types"
+  ],
+  "scripts": {
+    "dev:client": "npm run dev -w @just-test-cases/client",
+    "dev:server": "npm run dev -w @just-test-cases/server",
+    "dev:debug:server": "npm run dev:debug -w @just-test-cases/server",
+    "lint:fix": "npm run lint:fix -w @just-test-cases/client -w @just-test-cases/server",
+    "lint:check": "npm run lint:check -w @just-test-cases/client -w @just-test-cases/server",
+    "prettier": "npm run prettier -w @just-test-cases/client -w @just-test-cases/server",
+    "prettier:check": "npm run prettier -w @just-test-cases/client -w @just-test-cases/server",
+    "types:check": "npm run types:check -w @just-test-cases/client -w @just-test-cases/server",
+    "check": "npm run check -w @just-test-cases/client -w @just-test-cases/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@just-test-cases/server": "^1.0.0",
+    "eslint": "^9.28.0",
+    "eslint-plugin-sort-imports-requires": "^2.0.0",
+    "nodemon": "^3.1.10",
+    "pino-pretty": "^13.0.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-jsdoc": "^1.3.2",
+    "typescript": "^5.8.3"
+  }
+}

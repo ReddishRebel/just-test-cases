@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "strictNullChecks": true,
+    "paths": {
+      "just-test-cases": ["../../packages/types"]
+    }
+  },
+  "include": ["src/**/*.js"],
+  "exclude": ["node_modules"]
+}

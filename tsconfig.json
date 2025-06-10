@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [{ "path": "packages/types" }],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@just-test-cases/types": ["packages/types/src"]
+    }
+  }
+}
