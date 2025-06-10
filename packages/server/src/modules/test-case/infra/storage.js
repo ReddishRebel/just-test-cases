@@ -1,9 +1,9 @@
-const { MarkdownFileStorage } = require('./file-storage');
+const { MarkdownStorage } = require('./markdown-storage');
 const config = require('../../../config');
 
 class StorageFactory {
   static createStorage() {
-    return new MarkdownFileStorage({ storageFolderPath: config.storage.file.path });
+    return new MarkdownStorage({ storageDirectoryPath: config.storage.markdown.storageDirectoryPath });
   }
 }
 

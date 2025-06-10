@@ -8,7 +8,7 @@ const env = envalid.cleanEnv(process.env, {
   LOG_APP_NAME: envalid.str({ default: '@just-test-cases/server' }),
   LOG_LEVEL: envalid.str({ default: 'info' }),
   NODE_ENV: envalid.str({ default: 'production' }),
-  STORAGE_FILE_PATH: envalid.str({ default: path.resolve(process.cwd(), 'data') })
+  MARKDOWN_STORAGE_DIRECTORY_PATH: envalid.str({ default: path.resolve(process.cwd(), 'data') })
 });
 
 module.exports = {
@@ -21,8 +21,8 @@ module.exports = {
   },
   environment: env.NODE_ENV,
   storage: {
-    file: {
-      path: env.STORAGE_FILE_PATH
+    markdown: {
+      storageDirectoryPath: env.MARKDOWN_STORAGE_DIRECTORY_PATH
     }
   }
 };

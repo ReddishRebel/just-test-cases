@@ -6,7 +6,7 @@ const fsp = require('fs/promises');
 const path = require('node:path');
 
 /** @implements {StorageInterfaceType} */
-class MarkdownFileStorage {
+class MarkdownStorage {
   /** @typedef {FileStoragePropsType} */
   #props;
 
@@ -21,7 +21,7 @@ class MarkdownFileStorage {
   }
 
   async getProjects() {
-    const entries = await fsp.readdir(this.#props.storageFolderPath, { withFileTypes: true });
+    const entries = await fsp.readdir(this.#props.storageDirectoryPath, { withFileTypes: true });
     const directories = entries.filter(entry => entry.isDirectory());
     return directories.map(directory => directory.name);
   }
@@ -70,11 +70,11 @@ class MarkdownFileStorage {
   }
 
   #getFilePath(project, id) {
-    return path.resolve(this.#props.storageFolderPath, project, id);
+    return path.resolve(this.#props.storageDirectoryPath, project, id);
   }
 
   #getProjectPath(project) {
-    return path.resolve(this.#props.storageFolderPath, project);
+    return path.resolve(this.#props.storageDirectoryPath, project);
   }
 
   /** @param {String} filePath */
@@ -87,10 +87,10 @@ class MarkdownFileStorage {
   }
 }
 
-module.exports = { MarkdownFileStorage };
+module.exports = { MarkdownStorage };
 
 /** @import {StorageInterfaceType} from './storage'; */
 /** @import {TestCaseDTO} from 'just-test-cases'; */
 /** @import {PageCursor} from '../../../shared/pagination'; */
 
-/** @typedef {{ storageFolderPath: String }} FileStoragePropsType */
+/** @typedef {{ storageDirectoryPath: String }} FileStoragePropsType */
