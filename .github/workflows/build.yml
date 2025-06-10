@@ -1,0 +1,24 @@
+name: Build project docker image.
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+      DOCKER_IMAGE_NAME: 'just-test-cases'
+      DOCKER_TAG: 'latest'
+
+    steps:
+      - name: Checkout repository.
+        uses: actions/checkout@v2
+
+      - name: Log in to DockerHub.
+        run: echo "${DOCKER_HUB_TOKEN}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
+
+      - name: Build Docker image.
+        run: docker build -f Dockerfile -t "${DOCKER_HUB_USERNAME}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG}" .
+
+      - name: Push Docker image to DockerHub.
+        run: docker push "${DOCKER_HUB_USERNAME}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG}"
